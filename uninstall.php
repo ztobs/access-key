@@ -6,10 +6,17 @@
 
 if(!defined('WP_UNINSTALL_PLUGIN')) die ("You dont have privilege to uninstall this plugin");
 
+if(file_exists(dirname(__FILE__).'/vendor/autoload.php'))
+{
+    require_once dirname(__FILE__).'/vendor/autoload.php';
+}
+
+use Inc\Constants;
+
 
 global $wpdb;
-require_once plugin_dir_path( __FILE__ ).'inc/Constants.php';
 
+delete_option( Constants::SUB_PRODUCT_ID );
 delete_option( Constants::ADMINAPIKEY_METAKEY );
 delete_option( Constants::TOKEN_STATUS_SUCCESS );
 delete_option( Constants::TOKEN_STATUS_INVALID );

@@ -1,14 +1,11 @@
 <?php 
 
-/*
- * @package AccessKey
- */
     /*
     Plugin Name: Access Key Tool
     Plugin URI: 
-    Description: Generates access key for customers and creating API Access point
+    Description: Generates access key aka token for customers and creating API Endpoint to validate the customer tonens from a thirdparty app.
     Author: Joseph Lukan
-    Version: 1.0.0
+    Version: 1.0.1
     WC requires at least: 2.5.0
     WC tested up to: 3.3.0
     Author URI: http://tobilukan.com
@@ -19,10 +16,27 @@
 
 if(!function_exists('add_action')) die ("We caught you!!");
 
+if(file_exists(dirname(__FILE__).'/vendor/autoload.php'))
+{
+    require_once dirname(__FILE__).'/vendor/autoload.php';
+}
+
 
 define('ACCESSKEY_PLUGIN_PATH', plugin_dir_path( __FILE__ ));
 define('ACCESSKEY_PLUGIN_BASENAME', plugin_basename( __FILE__ ));
 define('ACCESSKEY_MIN_WP_VERSION', '3.0');
+
+
+
+
+use Inc\AccesskeyPluginActivate;
+use Inc\AccesskeyPluginDeactivate;
+use Inc\Conditions;
+use Inc\Shortcodes;
+use Inc\Order;
+use Inc\APIEndpointHelper;
+use Inc\Admin;
+use Inc\Ajax;
 
 
 class ZtobsAccessKey 
@@ -55,13 +69,11 @@ class ZtobsAccessKey
 
     function activate()
     {
-        require_once plugin_dir_path( __FILE__ ).'inc/AccesskeyPluginActivate.php';
         AccesskeyPluginActivate::activate();
     }
 
     function deactivate()
     {
-        require_once plugin_dir_path( __FILE__ ).'inc/AccesskeyPluginDeactivate.php';
         AccesskeyPluginDeactivate::deactivate();
     }
 
@@ -69,23 +81,20 @@ class ZtobsAccessKey
     // or the versions change after activation.
     function checkConditions() 
     {
-        require_once plugin_dir_path( __FILE__ ).'inc/Conditions.php';
-        $con = new Conditions();
-        $con->check();
+        $conditions = new Conditions();
+        $conditions->check();
     }
 
     
 
     function doShortcodes()
     {
-        require_once ACCESSKEY_PLUGIN_PATH.'inc/Shortcodes.php';
         $shortcodes = new Shortcodes();
         $shortcodes->userToken();
     }
 
     public function orderStatus($order_id, $old_status, $new_status)
     {
-        require_once plugin_dir_path( __FILE__ ).'inc/Order.php';
         if( $new_status == "completed" ) $order = new Order($order_id, $old_status, $new_status);
         
     }
@@ -100,16 +109,16 @@ class ZtobsAccessKey
 
     function apiEndpoint()
     {
-        require_once plugin_dir_path( __FILE__ ).'inc/APIEndpointHelper.php';
-        APIEndpointHelper::API(); 
+        $APIEndpointHelper = new APIEndpointHelper();
+        $APIEndpointHelper->API(); 
     }
 
     
 
     function adminPage()
     {
-        require_once plugin_dir_path( __FILE__ ).'inc/Admin.php';
-        Admin::ztobs_admin_menu();
+        $admin = new Admin();
+        $admin->ztobs_admin_menu();
     }
 
 
@@ -128,10 +137,10 @@ class ZtobsAccessKey
 
     private function process_ajax()
     {
-        require_once ACCESSKEY_PLUGIN_PATH.'inc/Ajax.php';
-        add_action('wp_ajax_ztobs_set_token', 'Ajax::setToken', 10);
-        add_action('wp_ajax_ztobs_set_admin_api_key', 'Ajax::updateAdminAPIKey', 10);
-        add_action('wp_ajax_ztobs_update_others', 'Ajax::updateOtherSettings', 10);
+        $ajax = new Ajax();
+        add_action('wp_ajax_ztobs_set_token', array($ajax, 'setToken'), 10);
+        add_action('wp_ajax_ztobs_set_admin_api_key', array($ajax, 'updateAdminAPIKey'), 10);
+        add_action('wp_ajax_ztobs_update_others', array($ajax, 'updateOtherSettings'), 10);
     }
 }
 

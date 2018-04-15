@@ -1,4 +1,11 @@
 <?php
+
+namespace Inc;
+
+
+use Inc\Admin;
+
+
 /**
 * 
 */
@@ -44,7 +51,6 @@ class Conditions
 
 	public function disabled_notice() 
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Admin.php';
 		Admin::admin_notice($this->errMsg, 'error');
     }
 

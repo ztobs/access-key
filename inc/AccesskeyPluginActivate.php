@@ -4,12 +4,17 @@
  * @package AccessKey
  */
 
+namespace Inc;
+
+
+use Inc\Constants;
+use Inc\Conditions;
+
+
 class AccesskeyPluginActivate
 {
 	public static function activate()
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Conditions.php';
 
 		$cond = new Conditions();
 		$errMsg = $cond->check();
@@ -51,11 +56,7 @@ class AccesskeyPluginActivate
 		flush_rewrite_rules( true );
 	}
 
-	static function compatible_version() {
-        if ( version_compare( $GLOBALS['wp_version'], '3.7', '<' ) ) {
-             return false;
-         }
-	}
+	
 
 
 

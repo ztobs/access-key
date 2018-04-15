@@ -1,5 +1,10 @@
 <?php
 
+namespace Inc;
+
+use Inc\SubscriberHelper;
+
+
 /**
 * 
 */
@@ -9,7 +14,6 @@ class RegisterUpdateUserHelper
 
 	public static function register($user_id)
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/SubscriberHelper.php';
 
 		$subscriberHelper = new SubscriberHelper();
         $sub = $subscriberHelper->getSubscriberById($user_id);

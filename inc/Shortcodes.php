@@ -1,5 +1,11 @@
 <?php
 
+
+namespace Inc;
+
+use Inc\SubscriberHelper;
+
+
 /**
 * 
 */
@@ -9,7 +15,6 @@ class Shortcodes
 
 	public function userToken()
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/SubscriberHelper.php';
 
 		$current_user = wp_get_current_user();
 		$user_id = $current_user->ID;

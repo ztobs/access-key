@@ -1,19 +1,26 @@
 <?php
 
+namespace Inc;
+
+use Inc\Constants;
+use Inc\SubscriberHelper;
+
+
+
 /**
 * 
 */
 class APIEndpointHelper
 {
 
-	public static function API()
+	public  function API()
 	{
 		register_rest_route( 
 				'accesskey/v1',
 				'/validate/key/(?P<key>[a-zA-Z0-9-]+)',
 				array( 
 					'methods'=>'POST',
-					'callback'=>'APIEndpointHelper::validate'
+					'callback'=>array($this, 'validate')
 				),
 				true 
 		);
@@ -21,10 +28,8 @@ class APIEndpointHelper
 
 	
 
-	public static function validate($data)
+	public  function validate($data)
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/SubscriberHelper.php';
 
 		$authkey = "Bearer ".get_option( Constants::ADMINAPIKEY_METAKEY, true );;
 		$userKey = $data['key'];

@@ -3,15 +3,21 @@
 /**
 * 
 */
+
+namespace Inc;
+
+
+use Inc\TokenHelper;
+use Inc\SubscriberHelper;
+use Inc\Constants;
+
+
 class Ajax
 {
 	
 
 	public static function setToken()
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/TokenHelper.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/SubscriberHelper.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
 		
 		$id = $_POST['user_id'];
 		$token = TokenHelper::setSubscriberToken($id);
@@ -48,7 +54,6 @@ class Ajax
 
 	public static function updateAdminAPIKey()
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
 		$key = $_POST['key'];
 		$resp = update_option( Constants::ADMINAPIKEY_METAKEY, $key );
 
@@ -57,7 +62,6 @@ class Ajax
 
 	public static function updateOtherSettings()
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
 
 		$token_status_success = $_POST['token_status_success'];
 		$token_status_invalid = $_POST['token_status_invalid'];

@@ -44,7 +44,8 @@ If you have any issue, dont forget to submit it. Or send an email to ztobscieng@
 ## Donations   
 
 If the plugin works for you can buy me a bear.
-Or sponsor my project to get me free stuffs.
+Or sponsor my projects to get other free stuffs from me.
 
 Bitcoin: 1HNBcGmE3LfPwoe7TUfbtqcopmRza1nmGg
+
 Payoneer: ztobscieng@gmail.com

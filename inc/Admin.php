@@ -4,31 +4,35 @@
  * @package AccessKey
  */
 
+namespace Inc;
+
+use Inc\SubscriberHelper;
+use Inc\TokenHelper;
+use Inc\Constants;
+
 class Admin
 {
-	public static function ztobs_admin_menu()
+	public  function ztobs_admin_menu()
 	{
 		add_menu_page( 
 	        __( 'API Key Tool', 'accesskey' ),
 	        __( 'API Key Tool', 'accesskey' ),
 	        'manage_options',
 	        'ztobs_accesskey',
-	        array('Admin', 'admin_index'),
+	        array($this, 'admin_index'),
 	        plugins_url( 'access-key/ap1.png' ),
 	        4
 	    ); 
 	}
 
-	public static function admin_index()
+	public function admin_index()
 	{
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/SubscriberHelper.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/TokenHelper.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
 
         if(get_option(Constants::SUB_PRODUCT_ID, "") == "") Admin::admin_notice("Set the Product for your subscription in 'Other Settings' tab in order for tool to work properly", 'error');
 
 		$subscriber = new SubscriberHelper();
-		require_once ACCESSKEY_PLUGIN_PATH.'templates/adminPage.php';
+		$_GET['CONSTANTS'] = new Constants();
+		include ACCESSKEY_PLUGIN_PATH.'templates/adminPage.php';
 	}
 
 	public static function admin_notice($message, $type)

@@ -1,5 +1,13 @@
 <?php
 
+namespace Inc;
+
+
+use Inc\Constants;
+use Inc\TokenHelper;
+use Inc\SubscriberHelper;
+
+
 /**
 * 
 */
@@ -11,7 +19,6 @@ class Order
 	function __construct($order_id, $old_status, $new_status)
 	{
 		global $wpdb;
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
 		
 		$this->order = wc_get_order($order_id);
 		$order_key = $this->order->get_order_key();
@@ -42,9 +49,7 @@ class Order
 		$msg = "Order-id is $order_key <br> Post-id is $post_id <br> User-id is $user_id";
 
 		
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/TokenHelper.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/SubscriberHelper.php';
-		require_once ACCESSKEY_PLUGIN_PATH.'inc/Constants.php';
+		
 
 		$user_token = get_user_meta( $user_id, Constants::ACCESSKEY_METAKEY, true );
 

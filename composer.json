@@ -1,0 +1,17 @@
+{
+    "name": "ztobs/access-key",
+    "description": "Create subscription token for your subscribers and use the API endpoint to query subscribers token if its valid, invalid or expired",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joseph Lukan",
+            "email": "ztobscieng@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}

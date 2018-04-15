@@ -1,4 +1,6 @@
-
+<?php
+	use Inc\Constants;
+?>
 <br>
 <div class="notice is-dismissible hidden"><p></p></div>
 <br><br>
