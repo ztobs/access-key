@@ -30,6 +30,6 @@ class Shortcodes
 
 	public function setUserToken()
 	{
-		return "<b>".$this->userTokenValue."</b>";
+		return $this->userTokenValue;
 	}
 }
