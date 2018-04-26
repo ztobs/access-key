@@ -5,7 +5,7 @@
     Plugin URI: 
     Description: Generates access key aka token for customers and creating API Endpoint to validate the customer tonens from a thirdparty app.
     Author: Joseph Lukan
-    Version: 1.0.1
+    Version: 1.0.2
     WC requires at least: 2.5.0
     WC tested up to: 3.3.0
     Author URI: http://tobilukan.com

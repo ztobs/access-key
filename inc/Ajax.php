@@ -39,9 +39,12 @@ class Ajax
 		$headers[] = "Content-Type: text/html; charset=UTF-8";
 
 		$message = str_replace("{token}", $token, $email_body);
-		$message = str_replace("{end_date}", $end_date, $message);
+		$message = str_replace("{end_date}", date("F j, Y, g:i a", strtotime($end_date)), $message);
 		$message = str_replace("{name}", $user_name, $message);
-		$message = str_replace("{start_date}", $start_date, $message);
+		$message = str_replace("{start_date}", date("F j, Y, g:i a", strtotime($start_date)), $message);
+
+		// Removing backslashes added by db
+		$message = str_replace('\\', "", $message);
 
 		if($user_email != "" &&  $email_subject != "" && $message != "" && $email_sender_name != "" && $sender_email != "" && $send_email == "true")
 		{

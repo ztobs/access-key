@@ -3,9 +3,27 @@ jQuery(document).ready(function(){
 
 	
 
-	tinymce.init({ selector:'textarea#refresh_email_body' });
-	tinymce.init({ selector:'textarea#new_email_body' });
-	tinymce.init({ selector:'textarea#renew_email_body' });
+	tinymce.init({ 
+		selector:'textarea#refresh_email_body',
+		plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount tinymcespellchecker a11ychecker imagetools mediaembed  linkchecker contextmenu colorpicker textpattern help code',
+		toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat code',
+		menubar: 'file edit view insert format tools table help',
+		image_advtab: true
+	});
+	tinymce.init({ 
+		selector:'textarea#new_email_body',
+		plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount tinymcespellchecker a11ychecker imagetools mediaembed  linkchecker contextmenu colorpicker textpattern help code',
+		toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat code',
+		menubar: 'file edit view insert format tools table help',
+		image_advtab: true
+	});
+	tinymce.init({ 
+		selector:'textarea#renew_email_body',
+		plugins: 'print preview fullpage powerpaste searchreplace autolink directionality advcode visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount tinymcespellchecker a11ychecker imagetools mediaembed  linkchecker contextmenu colorpicker textpattern help code',
+		toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat code',
+		menubar: 'file edit view insert format tools table help',
+		image_advtab: true
+		 });
 
 	jQuery('.mce-notification').hide();
 	jQuery('.mce-notification-inner').hide();

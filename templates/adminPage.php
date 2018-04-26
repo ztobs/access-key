@@ -137,7 +137,7 @@
 				</tr>
 				<tr>
 					<td><?php _e("Refresh Token Email Body", "accesskey"); ?>:</td>
-					<td><textarea id="refresh_email_body"><?php echo get_option( Constants::REFRESH_TOKEN_EMAIL_BODY, '' ); ?></textarea></td>
+					<td><textarea id="refresh_email_body"><?php echo str_replace('\\', "", get_option( Constants::REFRESH_TOKEN_EMAIL_BODY, '' )); ?></textarea></td>
 				</tr>
 				<tr>
 					<td><?php _e("Send Email Refresh Token", "accesskey"); ?>:</td>
@@ -150,7 +150,7 @@
 				</tr>
 				<tr>
 					<td><?php _e("New User Email Body", "accesskey"); ?>:</td>
-					<td><textarea id="new_email_body"><?php echo get_option( Constants::NEW_USER_EMAIL_BODY, '' ); ?></textarea></td>
+					<td><textarea id="new_email_body"><?php echo str_replace('\\', "", get_option( Constants::NEW_USER_EMAIL_BODY, '' )); ?></textarea></td>
 				</tr>
 				<tr>
 					<td><?php _e("Send Email New User", "accesskey"); ?>:</td>
@@ -163,7 +163,7 @@
 				</tr>
 				<tr>
 					<td><?php _e("Renew Subscription Email Body", "accesskey"); ?>:</td>
-					<td><textarea id="renew_email_body"><?php echo get_option( Constants::RENEW_SUB_EMAIL_BODY, '' ); ?></textarea></td>
+					<td><textarea id="renew_email_body"><?php echo str_replace('\\', "", get_option( Constants::RENEW_SUB_EMAIL_BODY, '' )); ?></textarea></td>
 				</tr>
 				<tr>
 					<td><?php _e("Send Email Renew Subscription", "accesskey"); ?>:</td>

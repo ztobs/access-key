@@ -83,9 +83,12 @@ class Order
 
 		// Replace the psuedocodes for email body
 		$email_body = str_replace("{token}", $token, $email_body);
-		$email_body = str_replace("{end_date}", $end_date, $email_body);
+		$email_body = str_replace("{end_date}", date("F j, Y, g:i a", strtotime($end_date)), $email_body);
 		$email_body = str_replace("{name}", $user_name, $email_body);
-		$email_body = str_replace("{start_date}", $start_date, $email_body);
+		$email_body = str_replace("{start_date}", date("F j, Y, g:i a", strtotime($start_date)), $email_body);
+
+		// Removing backslashes added by db
+		$email_body = str_replace('\\', "", $email_body);
 
 
 		// Setting email headers
