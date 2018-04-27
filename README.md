@@ -1,4 +1,4 @@
-**Access API Key Tool for Woocommerce Subscriptions**
+## Access API Key Tool for Woocommerce Subscriptions
 
 This is a wordpress plugin that uses woocommerce subscription plugin to generate user tokens for your customer and allows third party apps to query the status of your customers token if its valid, expired or invalid
 
@@ -8,7 +8,7 @@ This is a wordpress plugin that uses woocommerce subscription plugin to generate
 
 ## Usage
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+
 
 1. Setup wordpress
 2. Setup woocommerce

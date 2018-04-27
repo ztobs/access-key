@@ -62,7 +62,14 @@ class SubscriberHelper
 			$userId = get_post_meta( $r->ID, '_recipient_user', true );
 			if($userId == "") $userId = get_post_meta( $r->ID, '_customer_user', true );
 			$userData = get_userdata($userId);
+			$next_pay = get_post_meta( $r->ID, '_schedule_next_payment', true );
 			$end = get_post_meta( $r->ID, '_schedule_end', true );
+
+			// woocomerce subscription is messing around with end_date of prorated payment was chosen. This fix will set end_date to next_payment date which is correct
+			if($next_pay != 0) $end = $next_pay;
+			update_post_meta( $r->ID, '_schedule_end', $end); 
+			// End of fix
+
 			$cancel = get_post_meta( $r->ID, '_schedule_cancelled', true );
 
 			switch ($r->post_status) {
